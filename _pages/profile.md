@@ -22,7 +22,7 @@ title: Profile
   </tr>
   <tr>
     <td class="tg-0pky"><span style="font-weight:normal;font-style:normal;text-decoration:none">Personal Statement</span>: </td>
-    <td class="tg-0pky"> <a href="\personal-statement"> Download </a></td>
+    <td class="tg-0pky"> <a href="\personal-statement"> Jump to </a></td>
   </tr>
 </tbody>
 </table>
@@ -32,7 +32,7 @@ title: Profile
 
 I am Yichao, a postgraduate in Security Informatics and Software Engineering. I am looking forward to any Ph.D. opportunity in computer sciences, especially computer security and software engineering aspects. 
 
-I believe that I am a competitive student who can handle the issue individually, improve self-capability gradually and face tangled circumstances robustly. If you want to know more about my personality, please browser my "personal statement". 
+I believe that I am a competitive student who can handle the issue individually, improve self-capability gradually and face tangled circumstances robustly. If you want to know more about my personality, please browser my "[personal statement](/personal-statement)". 
 
 If you are more interested in my background, I will demonstrate myself from the three aspects in the remaining parts: 
 * Firstly, my [academic background](#1-academic-background),
