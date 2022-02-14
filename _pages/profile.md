@@ -29,50 +29,103 @@ title: Profile
 </table>
 </div>
 
-## 1. Introduction
+## 0. Introduction
 
-I am Yichao Xu, a postgraduate in Software Engineering. I am looking forwarding PhD opportunity in computer sciences, especially computer security aspects. I summaries the following three points to prove my competitiveness, and I organise the page from the three aspects: 
-* Firstly, a solid academic background to CS,
-* Secondly, various industrial projects experiences,
-* Finally, similar research project experiences about the signature of the functions
+I am Yichao Xu, a postgraduate in Security Informatics and Software Engineering. I am looking forward to any Ph.D. opportunity in computer sciences, especially computer security and software engineering aspects. If you are interested in my background, please see the remaining sections. I will demonstrate myself from the three aspects: 
+* Firstly, my academic background to CS,
+* Secondly, research project experiences, 
+* Thirdly, industrial project experiences, 
 
-## 2. Academic Background
+## 1. Academic Background
 
-### 2.1 JOHNS HOPKINS UNIVERSITY
+### 1.0 Take-away message
+
+I am currently studying at JHU focusing on computer security. I obtain my first master degree in software engineering at UCL (GPA 3.9). As my bachelor degree, it is at the University of Liverpool (GPA 3.9). My major was information computer sciences and software development.  
+
+### 1.1 JOHNS HOPKINS UNIVERSITY
 
 | Duration | Major | Degree |
 | - | - | - | 
 | 2021 - 2022 | Security Informatics (Research and Technique) | Master of Sciences|
 
-In this fall, I will start my second master education at JHU focusing on the research topics about computer security. 
+This fall, I started my second master's education at JHU focusing on computer security. I worked on two research projects: one is about the static analysis of JavaScript and another is about V2X communication. 
 
-### 2.2 UNIVERSITY COLLEGE LONDON
+### 1.2 UNIVERSITY COLLEGE LONDON
 
 | Duration | Major | Degree | GPA |
 | - | - | - | - |
 | 2019 - 2020 | System Software Engineering | MSc with Distinction | Over 3.9 |
 
-In UCL, I obtained my master's degree with distinction at UCL, and the major is system software engineering. The core courses include software architecture design, software testing & verifying and development tools (Git, DIFF and PATCH)
+In UCL, I obtained my master's degree with distinction at UCL, and the major is system software engineering. The core courses include software architecture design, software validation & verification.
 
-### 2.3 UNIVERSITY OF LIVERPOOL
+### 1.3 UNIVERSITY OF LIVERPOOL
 
 | Duration | Major | Degree | GPA |
 | - | - | - | - |
-| 2017 - 2019 | Software Development | BSc with First Honour | Over 3.9 |
+| 2017 - 2019 | Software Development & Information Computer Sciences | BSc with First Honour | Over 3.9 |
 
 In Liverpool, I obtained my first honour degree in software development and ICS. My courses were about the basic computer sciences, such as algorithm, data structure, operation system, databases, various programming languages, etc. 
 
-## 3. Campus Practices
+## 2. Research Experience
 
-### 3.1 Data Mining (Python)
+### 2.0 Take-away message
 
-| Duration | Project | Role |
+I worked in various different research projects, and most of them are about the security and software engineering. 
+
+I currently worked in two projects simultaneously in JHU. They are about websecurity and V2X security. Both of them are still in developing processes. 
+
+My previous reseachs focus on the code maintenance and the IoT system.
+
+### 2.1 Static Analysis of JavaScript
+
+| Duration | Institution | Role |
 | - | - | - | 
-| 2020.03-2020.06 | A tools for GitHub repository Mining based on Python | Developer | 
+| 2021.9-Now | Johns Hopkins University | Part-time Research Assistant | 
 
-In that project, I implemented a terminal tool based on Python, and there are about five thousands lines of codes. It can identify each commit's changes from the Github repositori es and then analyse co-changed relationships between the functions and tests.  
-I used the following techniques and frameworks in the tool: Pyriller (Mining the Githubr epositories), GumTree and Subprocess module Invoking the Java program for classifying changes in commits) Python's data analysis modules (Handling the CSV file, analysing and visualising data), APRIORI algorithm (finding out the association between tests and functions).  
-I used the tool to evaluate the tests maintenance approach in six GitHub repositories.I optimise the CoEv strategy for establishing "test-to-code tracebility links according to the results of experiments. The precision of the strategy increased to 30%. The tool can be fo unded from the link "https://github.com/aooXu/comp0110_project_tools"
+In this project, I worked with two doctor candidates to implement an idea, using the Object Dependency Graph to find out the possible vulnerabilities on objects. My works focus on another software, in which I tried to transfer the control flow graph generated in our system into that used in that one. The project is implemented by Scala.
+
+### 2.2 V2X communication simulation
+
+| Duration | Institution | Role |
+| - | - | - | 
+| 2021.9-Now | Johns Hopkins University | Part-time Research Assistant | 
+
+In this project, I worked in a JHU professor's V2X project. We constructed multiple different circumstances for V2X communication, including the CAM and DEMN messages. We used Mininet-WiFi and Veins in our simulation. 
+
+### 2.3 Mining repositories to establish the test-to-code links
+
+| Duration | Place | Role |
+| - | - | - | 
+| 2020.03-2020.06 | London | Researcher | 
+
+In the project, I mined GitHub repositories of six open-source Java projects. The results demonstrated the tests maintenance approaches of the developers.
+Based on these data, I optimised the classical CoEv strategy by the cocreation and coevolution relationship between the tests and functions codes.
+After that, I evaluated its precision on the other three java repositories, and the final result showed that the optimisations improve the precision by thirty per-cent.
+
+### 2.4 Analysing the DoS attacks to IoT system
+
+| Duration | Place | Role |
+| - | - | - | 
+| 2017.07-2017.09 | Suzhou | Researcher | 
+
+In the project, I worked with the teammates to test an IoT system's performance under three different DoS attacks.
+I used pressure test tools such as Ping3 and Hunk to launch the DoS attacks and modified the sources codes of the LOIC to customise the frequency and size of the attack packages. The results were collected by a Python program and Wireshark automatically.
+
+
+## 3. Industrial Project Experiences
+
+### 3.0 Take-away message
+
+I have various industrial projects. In this section, I demonstrated the recent two of them. Last year, I worked on an Hyperledger Fabric framework, which is mainly about the system architecture design for a tracking system of commercial explosives. The second one is about the android packages, in which we used the TensorFlow-lite in mobile devices. 
+
+### 3.1 Blockchain-based tracing system for the commercial explosives industry
+
+| Duration | Institution | Role |
+| - | - | - | 
+| 2020.11-2021.02 | China Academy of Industrial Internet | Research Assistant | 
+
+In CAII, I worked with Dr. He on a project about commercial explosives. I focused on the framework design for a platform that makes the government be able to monitor the manufacture, usage, and distribution of explosives. 
+In the design, I imported the Hyperledge Fabric to make all data immutable and used the private data set to protect the business's secrets. The CAII accepted my system design.
 
 ### 3.2 Android Package (Kotlin)
 
@@ -85,37 +138,3 @@ I used the following techniques and frameworks: Kotlin and MVVM (Ensuring the us
 I did the code review with "CarefulAI", A software development company from the UK. They accepted all functionalities, and the framework may be used in the NHSX project in the future.
 The codes of the framework can be founded from the link "https://github.com/aunroel/nhs_app/tree/android_branch/Android"
 
-
-## 4. Work Experience
-
-### 4.1 Research Intern
-
-| Duration | Institution | Role |
-| - | - | - | 
-| 2020.11-2021.02 | China Academy of Industrial Internet | Research Intern | 
-
-In CAII, I worked with Dr He on a project about commercial explosives. I mainly focused on the framework design for a platform that makes the government be able to monitor the manufacture, usage and distribution of explosives.
-In the design, I imported the Hyperledge Fabric to make all data immutable and used the private data set to protect the business secret.
-The CAII accepted the my system design.
-
-## 5. Research Experience
-
-### 5.1 Mining repositories to establish the test-to-code links
-
-| Duration | Place | Role |
-| - | - | - | 
-| 2020.03-2020.06 | London | Researcher | 
-
-In the project, I mined GitHub repositories of six open-source Java projects. The results demonstrated the tests maintenance approaches of the developers.
-Based on these data, I optimised the classical CoEv strategy by the cocreation and coevolution relationship between the tests and functions codes.
-After that, I evaluated its precision on the other three java repositories, and the final result showed that the optimisations improve the precision by thirty per-cent.
-
-### 5.2 Analysing the DoS attacks to IoT system
-
-| Duration | Place | Role |
-| - | - | - | 
-| 2017.07-2017.09 | Suzhou | Researcher | 
-
-In the project, I worked with the teammates to test an IoT system's performance under three different DoS attacks.
-I used pressure test tools such as Ping3 and Hunk to launch the DoS attacks and modified the sources codes of the LOIC to customise the frequency and size of the attack packages. The results were collected by a Python program and Wireshark automatically.
-We released a paper, "A Denial of Services Attack for IoT system", on the Sciences and Wealth.
