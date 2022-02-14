@@ -40,7 +40,7 @@ options {
 After that, we executed the following three commands in the VM. The first and the second dump all DNS cache into `dump.db` file and clear the cache in the server, respectively. The third one restarted the Bind9 DNS service to activate all changes to the configuration file. 
 
 <figure>
-<img style="width:60%; padding-left:20%; " src="media/16351739843977/16351776102245.jpg"/>
+<img style="width:60%; padding-left:20%; " src="/assets/images/media/16351739843977/16351776102245.jpg"/>
 <figcaption>Figure 0.1 "Bash Promp" for the three VMs</figcaption><br>
 </figure>
 
@@ -83,7 +83,7 @@ int main(int argc, char * argv[]) {
 The image below shows the package that we captured from the wireshark on "<ins style="color:blue;font-weight:bold">DNS</ins>". 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="media/16351739843977/16355029302845.jpg"/>
+<img style="width:75%; padding-left:12.5%; " src="/assets/images/media/16351739843977/16355029302845.jpg"/>
 <figcaption>Figure 1.1 Capture package after executing the command </figcaption><br>
 </figure>
 
@@ -95,21 +95,21 @@ We used the Wireshark to first capture the request and response package for DNS 
 We sent the request by command `dig @10.0.2.6 www.example.edu`. As the image below shows, there were four packages. The first one was the DNS request package from "<ins style="color:red;font-weight:bold">ATK</ins>" to "<ins style="color:blue;font-weight:bold">DNS</ins>". Because the url was constructed by us, and it is highly-possible that there was no cache for such a request. Therefore, "<ins style="color:blue;font-weight:bold">DNS</ins>" had to send a request to authority name server online to request ip of the url, which is the second package in the image. In the package 03, the online name server responded the request. Finally, the "<ins style="color:blue;font-weight:bold">DNS</ins>"cached the request and responded the request from "<ins style="color:red;font-weight:bold">ATK</ins>". 
 
 <figure> 
-<img style="width:75%; padding-left:12.5%; " src="media/16351739843977/16356288578567.jpg"/>
+<img style="width:75%; padding-left:12.5%; " src="/assets/images/media/16351739843977/16356288578567.jpg"/>
 <figcaption>Figure 1.2.1.1 All captured packages after request abcde.example.edu</figcaption><br>
 </figure>
 
 In there, we focused only on the first and the third package, because they are critical for our attack. Figure 1.2.1.2 below shows the details of the first package. In the dns header, we need to specify the *request id*(2 bytes), *flag* (0x8403) and *the number of each record* (2 bytes each). As to the dns payload, there are two records: a question record and an additional record. The later one is optional, so we should construct the question record also following the example which consist of *url address*(size depended by the url length), *type*(0x0001) and *class*(0x0001)
 
 <figure> 
-<img style="width:75%; padding-left:12.5%; " src="media/16351739843977/16356288807677.jpg"/>
+<img style="width:75%; padding-left:12.5%; " src="/assets/images/media/16351739843977/16356288807677.jpg"/>
 <figcaption>Figure 1.2.1.2 Details of the first package (DNS Request)</figcaption><br>
 </figure>
 
 Figure 1.2.1.3 below is the captured package for the package 3 from the remote name server. Compared with the first one, the *flag* was set to 0x0084, and two answer records occurred in the package. Even though, there was no authority record, we can still add it into the package so that we can poisoned caches on the  "<ins style="color:blue;font-weight:bold">DNS</ins>". 
 
 <figure> 
-<img style="width:75%; padding-left:12.5%; " src="media/16351739843977/16356289439910.jpg"/>
+<img style="width:75%; padding-left:12.5%; " src="/assets/images/media/16351739843977/16356289439910.jpg"/>
 <figcaption>Figure 1.2.1.3 Details of the third package (DNS response)</figcaption><br>
 </figure>
 
@@ -278,7 +278,7 @@ Finally, we initialised the socket and sent the package. We set the sock address
 The image below shows the package we captured in Wireshark. We defined three records: one question, one answer and one authority. Our spoofing package aimed to make the "<ins style="color:blue;font-weight:bold">DNS</ins>" believe that the address of `aaaaa.example.edu` should be `1.2.3.4` and the name server should be `ns.dnslabattacker.com`. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="media/16351739843977/16356264191956.jpg"/>
+<img style="width:75%; padding-left:12.5%; " src="/assets/images/media/16351739843977/16356264191956.jpg"/>
 <figcaption>Figure 1.2.2.1 Capture package after spoofing DNS Replies </figcaption><br>
 </figure>
 
@@ -316,7 +316,7 @@ while(1){
 We used the following two commands to verify the result of our attack. The output below actually proves that the NS record for `example.edu` becomes `ns.dnslabattacker.net`. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="media/16351739843977/16356208433384.jpg"/>
+<img style="width:75%; padding-left:12.5%; " src="/assets/images/media/16351739843977/16356208433384.jpg"/>
 <figcaption>Figure 1.3.1 The changed record in the Cache file </figcaption><br>
 </figure>
 
@@ -379,6 +379,6 @@ mail IN A 1.1.1.2
 The image below shows the output after we query the `www.example.edu`. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="media/16351739843977/16356444377688.jpg"/>
+<img style="width:75%; padding-left:12.5%; " src="/assets/images/media/16351739843977/16356444377688.jpg"/>
 <figcaption>Figure 1.3.1 The changed record in the Cache file </figcaption><br>
 </figure>
