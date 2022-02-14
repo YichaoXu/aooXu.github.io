@@ -23,7 +23,7 @@ $ source ~/.bashrc
 We also used the commands above to configure their bash prompt, which can help us identify them more easily. As the image shows, we used the left one as server and right one as attacker.  
 
 <figure>
-<img style="width:70%; padding-left:15%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_1560f8c21056c99c8028c0d4379ec377.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_1560f8c21056c99c8028c0d4379ec377.png"/>
 <figcaption>Figure 0.1 "Bash Promp" for the three VMs</figcaption><br>
 </figure>
 
@@ -34,7 +34,7 @@ We also used the commands above to configure their bash prompt, which can help u
 We assumed an apache server run on VM "*VTM1*" as the victim of SYN flooding attack. The address for the server is `10.0.2.7:23`. The attacker is VM "*ATK*" whose IP is `10.0.2.15`
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9cb07f1ccd5bd0cae68ddb0065ac038d.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9cb07f1ccd5bd0cae68ddb0065ac038d.png"/>
 <figcaption>Figure 1.1.2 IP Address for the attacker and the Server</figcaption><br>
 </figure>
 
@@ -47,7 +47,7 @@ $ sudo sysctl -q net.ipv4.tcp_max_syn_backlog
 The image below shows the size of the queue in "*VTM1*" is $128$. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_8c7363e2eabbff189a813013bbcf83a2.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_8c7363e2eabbff189a813013bbcf83a2.png"/>
 <figcaption>Figure 1.1.2 The half-opened connection queue size for "VTM1"</figcaption><br>
 </figure>
 
@@ -67,7 +67,7 @@ $ sudo sysctl -w net.ipv4.tcp_syncookies=0
 The image below is the outputs we got. After executing the first one, we found the value for `tcp_syncookies` is $1$, which means the protection is activated. Then, we used the second command to deactivate it.
 
 <figure>
-<img style="width:70%; padding-left:15%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_8161a538abee34a267026e2c1fe4d7ad.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_8161a538abee34a267026e2c1fe4d7ad.png"/>
 <figcaption>Figure 1.1.3 Checking and deactivating TCP Cookie mechanism </figcaption><br>
 </figure>
 
@@ -75,7 +75,7 @@ The image below is the outputs we got. After executing the first one, we found t
 We used the command `netwox 76` to launch attack, the `--help` was used first for us to check the format for its usage. The image below shows what we got there. 
 
 <figure>
-<img style="width:70%; padding-left:15%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_fc678f0f83e2b4d978e3ff4fcf4a4b56.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_fc678f0f83e2b4d978e3ff4fcf4a4b56.png"/>
 <figcaption>Figure 1.2.1 The help document of netwox 76</figcaption><br>
 </figure>
 
@@ -93,14 +93,14 @@ $ netstat -nat | grep 23
 The image below shows the outputs for executing these commands. The output of command 01 shows there was no half-open connection before attacking, and that of command 03 was utterly different where the result had more the `SYN_RECV` connection. Besides, we also tried to connect the "*VTM1*" from the "*VTM2*" directly by command 04, and the output was a time-out warning. That proven that we successfully launch the SYN flooding in here. 
 
 <figure>
-<img style="width:90%; padding-left:5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_dc639b6faac6d5707600df16c6ba7c3d.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_dc639b6faac6d5707600df16c6ba7c3d.png"/>
 <figcaption>Figure 1.2.2 The outputs for the previous three commands to launch SYN  flooding </figcaption><br>
 </figure>
 
 As the image below shows, we also used the Wireshark in "*VTM1*" to capture our attacking package as the task document required. The package display filter we used is `tcp.port == 23`, so the program will only capture the TCP packages to port $23$. There were only the SYN packages displayed on the Wireshark, and all of there SYN packages came from random IP addresses. 
 
 <figure>
-<img style="width:70%; padding-left:15%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_676c43ec914caf0d1aaf70a58e2b778c.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_676c43ec914caf0d1aaf70a58e2b778c.png"/>
 <figcaption>Figure 1.2.3 Captured packages in Wireshark without TCP cookies protection </figcaption><br>
 </figure>
 
@@ -118,7 +118,7 @@ $ netstat -nat | grep 23
 The image below shows the outputs and the order of these commands. Compared with that without cookies, there are no any `SYN_RCV` connection occurred in "*VTM1*"
 
 <figure>
-<img style="width:100%; padding-left:0%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_ec839195f3266737e2b1ab07d9a716e0.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_ec839195f3266737e2b1ab07d9a716e0.png"/>
 <figcaption> Figure 1.3.2 Captured packages in Wireshark with TCP cookies protection </figcaption><br>
 </figure>
 
@@ -126,7 +126,7 @@ The image below shows the outputs and the order of these commands. Compared with
 Furthermore, Wireshark was running to verify these SYN packages arrived during attacking. We found that there still a large number of SYN packages received by the server, but the half-open connections were not established. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_ff2f6c7a6768440b1b83004dad4ca49f.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_ff2f6c7a6768440b1b83004dad4ca49f.png"/>
 <figcaption> Figure 1.3.2 Captured packages in Wireshark with TCP cookies protection </figcaption><br>
 </figure>
 
@@ -151,7 +151,7 @@ We make the "*VTM2*" successfully connect with the "*VTM1*" by executing command
 Similarly, we first reviewed the usage of the `netwox 78` which were used to launch an attack. The image below shows the the help document. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_191034e941a06815bea311aefb09baad.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_191034e941a06815bea311aefb09baad.png"/>
 <figcaption> Figure 2.1.1 Help pdocument of netwox 78</figcaption><br>
 </figure>
 
@@ -167,7 +167,7 @@ $ sudo netwox 78 -i 10.0.2.7
 The image below shows the outputs of these commands. The Telnet connection was closed, which proven that our attack was success. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d80c2de1000fba7a99cb70314d5383c6.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d80c2de1000fba7a99cb70314d5383c6.png"/>
 <figcaption> Figure 2.1.2 An attack for Telnet connetion </figcaption><br>
 </figure>
 
@@ -177,7 +177,7 @@ The image below shows the outputs of these commands. The Telnet connection was c
 After that, we also tried to launch an attack by a same command to a SSH connection (We use `ssh 10.0.2.7` to establish). As the image below shows, the SSH connection also closed after attacking. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_db362e039b8ea3c92cfcecfe542a4bb7.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_db362e039b8ea3c92cfcecfe542a4bb7.png"/>
 <figcaption> Figure 2.2.1 An attack for SSH connection </figcaption><br>
 </figure>
 
@@ -186,7 +186,7 @@ After that, we also tried to launch an attack by a same command to a SSH connect
 Before modifying the script code, we first ran the Wireshark on the "*ATK*" to observe the expected next sequence number, because the TCP package with invalid seq number will be discard. We used the Wireshark to capture all these Telnet packages from the server to client by defining the filter `ip.src == 10.0.2.7 and ip.dst == 10.0.2.6 and tcp.port == 23`. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_ffc9bf7ddf9645af9c550550e8398232.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_ffc9bf7ddf9645af9c550550e8398232.png"/>
 <figcaption> Figure 2.3.1 Last captured TCP package from Telnet server to client. </figcaption><br>
 </figure>
 
@@ -212,7 +212,7 @@ send(pkt, verbose=0)
 After executing the python script with sudo, we got the output as the image shows below. The TelNet connection was closed, which proven that our attack succeed.
 
 <figure>
-<img style="width:100%; padding-left:0%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_f43619fa3ca0e8f55b99e73b22bc4977.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_f43619fa3ca0e8f55b99e73b22bc4977.png"/>
 <figcaption> Figure 2.3.2 Output after executing the python script </figcaption><br>
 </figure>
 
@@ -222,28 +222,28 @@ After executing the python script with sudo, we got the output as the image show
 We first use our victim machine to open a video site, in this case, Youtube. And then we choose an arbitrary video to view.
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_91e5b608486952931d5ad738925d0f63.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_91e5b608486952931d5ad738925d0f63.png"/>
 <figcaption> Figure 3.1 Browsing Youtube </figcaption><br>
 </figure>
 
 Then we do the same thing like in task5, we start the TCP RST attack by netwox towards the victim ip 10.0.2.15.
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_e49f71502f89f0271ae2dacc3c2a3a8a.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_e49f71502f89f0271ae2dacc3c2a3a8a.png"/>
 <figcaption> Figure 3.2 Launch TCP RST Attack </figcaption><br>
 </figure>
 
 Clearly, our video loading stuck at some point when we have played the loaded contents.
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_7ef296c04ff2ab0305daeeb7d6fbd90e.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_7ef296c04ff2ab0305daeeb7d6fbd90e.png"/>
 <figcaption> Figure 3.3 Loading Stuck </figcaption><br>
 </figure>
 
 We then try to refresh the page or click other videos to continue. We will see the connection lost warning, showing that the TCP connection has been interrupted successfully.
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_bcf52e29c3ca0850ae5b2669eb01e652.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_bcf52e29c3ca0850ae5b2669eb01e652.png"/>
 <figcaption> Figure 3.4 Connection Lost </figcaption><br>
 </figure>
 
@@ -276,7 +276,7 @@ $ nt -lv 9090
 The image below shows outputs of all commands we executed during preparation. 
 
 <figure>
-<img style="width:100%; padding-left:0%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_054d2f90ec0b8c95f6340ba4a9cabf99.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_054d2f90ec0b8c95f6340ba4a9cabf99.png"/>
 <figcaption> Figure 4.1.2 The last captured Telnet package by Wireshark</figcaption><br>
 </figure>
 
@@ -285,14 +285,14 @@ The image below shows outputs of all commands we executed during preparation.
 Before launching attack, it was essential to know the sequence number for the next package. We used Wireshark to get all data there. The image below shows the last Telnet package we got from Wireshark. We prepared with the ip, port numbers given, which were 10.0.2.6:39172 (client) and 10.0.2.7:23 (Server). Also, we could use the above Seq number and Ack number. Finally, we set the flag as Ack and set the data with our reverse Shell code command like the following. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_6f7b9de46e88b5bd5a0b62838cf1b2f3.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_6f7b9de46e88b5bd5a0b62838cf1b2f3.png"/>
 <figcaption> Figure 4.2.1 The last captured Telnet package by Wireshark</figcaption><br>
 </figure>
 
 Then, we used the `netwox 40` to launch the attack, and the image below shows the help document of it. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_0873f3d0f9a46b4ff4e7f0347ecc9658.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_0873f3d0f9a46b4ff4e7f0347ecc9658.png"/>
 <figcaption> Figure 4.2.1 The help document of the netwox 40</figcaption><br>
 </figure>
 
@@ -310,7 +310,7 @@ $ sudo netwox 40 \
 The image below shows that we successfully access the data inside of the screte file in "*VTM1*" by the `netcat` on "*ATK*". 
 
 <figure>
-<img style="width:100%; padding-left:0%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_132822999242ee8170a3cfd3ff6d74db.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_132822999242ee8170a3cfd3ff6d74db.png"/>
 <figcaption> Figure 4.2.2 Executing of the attack from the netwox</figcaption><br>
 </figure>
 
@@ -321,7 +321,7 @@ The image below shows that we successfully access the data inside of the screte 
 We also implemented the attack by the Python package, Scapy. Before attacking, we used the Wireshark again to get the last TelNet package. The port number (39176), sequence number (3770990930) and ACK number (1042719746) were updated. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_f76c4056f53cc38d9b1f585e88e36e42.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_f76c4056f53cc38d9b1f585e88e36e42.png"/>
 <figcaption> Figure 4.2.2 Executing of the attack from the netwox</figcaption><br>
 </figure>
 
@@ -345,7 +345,7 @@ send(pkt,verbose=0)
 After lauching the attack, we got the output below, which shows that we successfully access the secret file form the "*VTM1*". 
 
 <figure>
-<img style="width:100%; padding-left:0%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_132822999242ee8170a3cfd3ff6d74db.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_132822999242ee8170a3cfd3ff6d74db.png"/>
 <figcaption> Figure 4.3.2 Outputs for the commands</figcaption><br>
 </figure>
 
@@ -359,14 +359,14 @@ In the end, we expected to see that the attack machine hijacked the telnet conne
 We first built the telnet connection as the following and we also used the command `netstat -tna | grep 10.0.2.6` to verify the connection. 
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_51bab920ad71225615ac577a81de5923.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_51bab920ad71225615ac577a81de5923.png"/>
 <figcaption> Figure 5.1 Establishing the Telnet from Client to Server </figcaption><br>
 </figure>
 
 On the attack machine, we ran the wireshark that captured the last package between the victim and the server.
 
 <figure>
-<img style="width:75%; padding-left:12.5%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_dcd07ce76b527ce17359e64c5e4e8aac.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_dcd07ce76b527ce17359e64c5e4e8aac.png"/>
 <figcaption> Figure 5.2 Running Wireshark to check the Seq and Ack number </figcaption><br>
 </figure>
 
@@ -391,7 +391,7 @@ We then run the scapy file after we start listening the 9090 port. We can see th
 
 
 <figure>
-<img style="width:100%; padding-left:0%; " src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_6cdb0f649b4bd92d9715e65a024e279a.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_6cdb0f649b4bd92d9715e65a024e279a.png"/>
 <figcaption> Figure 5.4 Running the attack </figcaption><br>
 </figure>
 

@@ -17,7 +17,7 @@ $ source ~/.bashrc
 ```
 We also used the commands above to configure their bash prompt, which can help us identify them more easily. As the image shows, we used the left one as server and right one as attacker.  
 
-<img style="width:100%;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_b8211abe61ddc9fe4d7eddc7581cc0ec.png"/>
+<img style="width:100%"https://codimd.s3.shivering-isles.com/demo/uploads/upload_b8211abe61ddc9fe4d7eddc7581cc0ec.png"/>
 
 
 ### 0.2 DNS Configuration
@@ -64,7 +64,7 @@ We logged in the website *http://www.xsslabelgg.com* as Samy (from the victim br
 
 As image below shows, We modified the content of his **Brief description** to a simple javascript code section, `<script>alert("XSS");</script>`. We also made its public to everyone, so that it could be insert to the webpage when someone access Samy's profile.  
 
-<img style="width:70%; padding-left:15%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_a9c14d55f1c715b89340a87e4a7b5175.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_a9c14d55f1c715b89340a87e4a7b5175.png"/>
 
 
 After that, we logged in as Alice to access Samy's profile.
@@ -73,7 +73,7 @@ After that, we logged in as Alice to access Samy's profile.
 
 There was a popped-out dialogue box after opening the webpage, which actually proven there is a XSS vulnerability here.  
 
-<img style="width:60%; padding-left:20%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_92f36c2a7ddb0c849eeaf5e69745a000.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_92f36c2a7ddb0c849eeaf5e69745a000.png"/>
 
 
 
@@ -86,7 +86,7 @@ This case we modified the content of Samy's **Brief Description** as the code se
 ```
 As the image below shows, the imported script also worked.  
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9af32eb5a53945574188dd9a44636f6b.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9af32eb5a53945574188dd9a44636f6b.png"/>
 
 <div style="page-break-after: always;"></div>
 
@@ -98,12 +98,12 @@ alert(document.cookie);
 ```
 As the image below shows it successfully accessed data in the cookie of the website.  
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_f1249fbf6446ae97be27d578e6088274.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_f1249fbf6446ae97be27d578e6088274.png"/>
 
 
 We also tried to directly insert the code `<script>alert(document.cookie);</script>`. As the image shows, it also worked.  
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_fe6c20031ba1210c88eea2f7aae87748.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_fe6c20031ba1210c88eea2f7aae87748.png"/>
 
 
 (PS. the popped-out values were different because we changed the login account from Alice to Samy)
@@ -137,11 +137,11 @@ $ nc -l 5555 -v
 
 We logged-in with Alice's account, and then accessed Samy's profile. The image below shows the webpage after Alice accessing.  
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_a1749e8855953aadad7abc0c0f58dfd1.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_a1749e8855953aadad7abc0c0f58dfd1.png"/>
 
 The image below is the output of `netcat` command, which proven that the attacker obtained the data in cooke. (Value for `Elgg` is same with that in popped-up dialog box)  
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_b7253fe295af53901abbc5adebb4923f.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_b7253fe295af53901abbc5adebb4923f.png"/>
 
 <div style="page-break-after: always;"></div>
 
@@ -154,7 +154,7 @@ The image below is the output of `netcat` command, which proven that the attacke
 
 As image below shows, we used the "**HTTP Header Live**" to observe changes after clicking the "add friend" button. 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d788e544b329ca2d12d992c63f3e82ee.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d788e544b329ca2d12d992c63f3e82ee.png"/>
 
 
 We found a GET request to the following url was created. 
@@ -182,7 +182,7 @@ We added this codes into Samy's "**About Me**" as HTML. After that, we logged-in
 
 The image below shows that Samy became Boby's friend after accessing Samy's profile. Specifically, we found the codes were successfully inserted into "**About Me**" by the "Element Inspector" on the left. We also saw that the GET request occurred in "HTTP Header Live" on the right. The bottom of the page shows that Samy had already been added as Boby's friend without clicking the "Add friend" button.
 
-<img style="width:75%; padding-left:12.5%; align-self:centre" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_477765f180b8e046e74fa5fb6789a081.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_477765f180b8e046e74fa5fb6789a081.png"/>
 
 
 ### 4.2 Answer Q01: The purpose of Lines ➀ and ➁
@@ -198,7 +198,7 @@ On the textbook, it mentioned various methods to break the editor limitation on 
 
 We used the HTTP Header Live to observe the request after saving the profile changes. The image below was what we captured: 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_6b5989d7572892a5f4bfd87df0e25f89.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_6b5989d7572892a5f4bfd87df0e25f89.png"/>
 
 In there, we noticed that it is a POST request. As to the arguments, all of them are in the request body instead of the URL. There are elgg timestamp (i.e. `__elgg_ts`) and elgg token (i.e. `__elgg_token`). The data is put in the `description` field, and there are also two fields related to Samy (name and guid). 
 
@@ -206,7 +206,7 @@ In there, we noticed that it is a POST request. As to the arguments, all of them
 
 We used the console in Firefox development tool to output all arguments essential for the requests. The images below shows what we got here. 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_efebb3cf422f0f37ce2d591d495e8ad3.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_efebb3cf422f0f37ce2d591d495e8ad3.png"/>
 
 Furthermore, we constructed `<script>alert('FROM CURL');</script>` as test code in there. If the request works, we will see a popped-up dialogue box with message "FROM CURL". We converted all special characters into URI encoding and encoded codes were `%3Cscript%3Ealert%28%27FROM%20CURL%27%29%3B%3C%2Fscript%3E`.
 
@@ -230,7 +230,7 @@ curl -X POST -v \
 
 After executing the command, we accessed Samy's profile and we saw the popped-up box. 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_3f0da66f530e38ceaf06779fb46d60eb.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_3f0da66f530e38ceaf06779fb46d60eb.png"/>
 
 It proven that we modified Samy's "**About Me**" by CURL. 
 
@@ -244,7 +244,7 @@ It proven that we modified Samy's "**About Me**" by CURL.
 
 As we did in the task04, we also used the HTTP Header Live to observe the url. The image below shows the POST request captured by the add-on. 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d1e6c70fd8945a7a85661db8b115d49e.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d1e6c70fd8945a7a85661db8b115d49e.png"/>
 
 
 We found the url should be "*http://www.xsslabelgg.com/action/profile/edit*". Besides, we also noticed that all data, such as timestamp token and description etc., were put into the request body. 
@@ -262,7 +262,7 @@ var samyGuid = 47;
 ```
 The image below shows that Bob's profile was changed after accessing Samy's page. 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_3f21f42d313e6067dcb2b8b2d03f63fc.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_3f21f42d313e6067dcb2b8b2d03f63fc.png"/>
 
 
 
@@ -276,7 +276,7 @@ The line ➀ actually check whether the current user is Samy. If it is, the scri
 
 We modified our previous code at line ➀ to `if(true) {`. The image below show the change after saving the profile. The codes in "**About Me**" was automatically changed to a plaintext. 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_64d2f47623ccaef475ed0374f5c59d6f.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_64d2f47623ccaef475ed0374f5c59d6f.png"/>
 
 <div style="page-break-after: always;"></div>
 
@@ -338,7 +338,7 @@ window.onload = function () {
 
 As the image below shows, the code worked well. We logged in as Boby and then accessed Samy's profile. After that, Boby's "**About Me**" was replaced by the code, and he also added Samy as a friend. 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_dec1ac7be0e5d7bd7808252fec128381.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_dec1ac7be0e5d7bd7808252fec128381.png"/>
 
 
 (PS. we ensured that Samy is not friend of Boby before starting the task)
@@ -374,7 +374,7 @@ window.onload = function () {
 
 We put the codes directly into Samy's "**About Me**", and redid the steps in last section. The image below shows it also worked well when Boby accesses Samy's profile.
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_431b17316feb0b38f97265a518e4e48a.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_431b17316feb0b38f97265a518e4e48a.png"/>
 
 <div style="page-break-after: always;"></div>
 
@@ -388,23 +388,23 @@ In the task, we prepared two victim: Boby and Alice. The attacker is Samy. Charl
 
 We logged-in the system as Admin and activated the `HTMLawed` protection without the `htmlspecialchars`. After that, we used Charlie to access Boby's profile. The image below was what we saw. The previous `<script>` tag are replaced by `<p>` and the newline tag `<br>` was added to each lines of the codes.
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_2edad8f5ab2aeef1badd7987c170834f.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_2edad8f5ab2aeef1badd7987c170834f.png"/>
 
 
 ### 7.3 Turn on htmlspecialchars
 
 We uncommented the lines in the image below. And then, we edited Alice's and Samy's profiles, and saved all changes.
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_ef995909092db2e8d23e9179fce6c736.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_ef995909092db2e8d23e9179fce6c736.png"/>
 
 
 We found that all URL was converted to a link after activating such countermeasure.
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_1ea10fa42724a52579250cff45b5b242.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_1ea10fa42724a52579250cff45b5b242.png"/>
 
 
 
 After that, we also tried to edit Samy's profile. In the editor, we found the data in the HTML editor had already been converted. For example, the special characters in the string, the'<' and '>', became the `&lt;` and `&gt;`. We expected the email address to be also converted, but our codes have no such kind of strings. 
 
-<img style="width:75%; padding-left:12.5%; align-self:centre;" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_66d8bd25a9d091de58e6ff4985db98b8.png"/>
+<img style="width:100%" src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_66d8bd25a9d091de58e6ff4985db98b8.png"/>
 
