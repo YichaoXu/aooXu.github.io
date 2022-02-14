@@ -104,6 +104,7 @@ In this project, I worked in a JHU professor's V2X project. We constructed multi
 In the project, I mined GitHub repositories of six open-source Java projects. The results demonstrated the tests maintenance approaches of the developers.
 Based on these data, I optimised the classical CoEv strategy by the cocreation and coevolution relationship between the tests and functions codes.
 After that, I evaluated its precision on the other three java repositories, and the final result showed that the optimisations improve the precision by thirty per-cent.
+If you are interesting about this research, please see the [report](/assets/pdfs/ReportForProject.pdf). 
 
 ### 2.4 Analysing the DoS attacks to IoT system
 
