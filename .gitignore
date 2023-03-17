@@ -1,6 +1,19 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
-**/.DS_Store
+# Ignore system files
+.DS_Store
+.hugo_build.lock
+Thumbs.db
+
+# Ignore Hugo build output
+/public
+/resources/_gen
+
+# Ignore Node.js dependencies
+node_modules
+
+# Ignore temporary files created by editors and other tools
+*.swp
+*.swo
+*.tmp
+*~
+*.bak
+*.log
